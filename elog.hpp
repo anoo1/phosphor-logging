@@ -113,9 +113,9 @@ void commit(std::string exceptionStr)
     // Create error log by calling the dbus Commit method, which takes the
     // transaction id and the err_code.
     auto b = sdbusplus::bus::new_default();
-    auto m = b.new_method_call(BUSNAME_LOGGING,
-                               OBJ_INTERNAL,
-                               IFACE_INTERNAL,
+    auto m = b.new_method_call("xyz.openbmc_project.Logging",
+                               "/xyz/openbmc_project/Logging/Internal/Manager",
+                               "xyz.openbmc_project.Logging.Internal.Manager",
                                "Commit");
     m.append(id, exceptionStr.substr(0, idPos));
     b.call_noreply(m);
