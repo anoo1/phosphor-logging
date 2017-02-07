@@ -61,6 +61,11 @@ AC_DEFINE(OBJ_INTERNAL, "/xyz/openbmc_project/Logging/Internal/Manager", [The pr
 AC_DEFINE(OBJ_ENTRY, "/xyz/openbmc_project/Logging/Entry", [The log entry DBus object path.])
 AC_DEFINE(IFACE_INTERNAL, "xyz.openbmc_project.Logging.Internal.Manager",
     [The private log manager interface.])
+
+AC_ARG_VAR(YAML_PATH, [The path to the yaml error files.])
+AS_IF([test "x$YAML_PATH" == "x"],
+    [YAML_PATH="$srcdir/tools/example/xyz/openbmc_project/Example/"])
+
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile test/Makefile])
 AC_OUTPUT
